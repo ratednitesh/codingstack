@@ -12,6 +12,7 @@ public class TwoSum {
         System.out.println(Arrays.toString(twoSum(arr, 9)));
     }
 
+    // Approach 1: Using HashMap
     public static int[] twoSum(int[] nums, int target) {
         int[] result = new int[2];
         HashMap<Integer, Integer> map = new HashMap<>();
@@ -24,4 +25,6 @@ public class TwoSum {
         }
         return result;
     }
+
+
 }
