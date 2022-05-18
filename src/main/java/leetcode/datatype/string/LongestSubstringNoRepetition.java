@@ -49,7 +49,7 @@ public class LongestSubstringNoRepetition {
         return maxLen;
     }
 
-    // using 256 array
+    // using 256 array - sliding Window
     public int lengthOfLongestSubstring3(String s) {
         int result = 0;
         int[] cache = new int[256];
@@ -59,5 +59,22 @@ public class LongestSubstringNoRepetition {
             result = Math.max(result, i - j + 1);
         }
         return result;
+    }
+
+    // using 256 array as HS
+    public int lengthOfLongestSubstringHS(String s) {
+        int[] chars = new int[256];
+        int currentLength = 0;
+        int max = 0, i = 0, j = 0;
+        while (i < s.length()) {
+            if (chars[s.charAt(i)] == 0) {
+                chars[s.charAt(i++)]++;
+                max = Math.max(++currentLength, max);
+            } else {
+                chars[s.charAt(j++)]--;
+                currentLength--;
+            }
+        }
+        return max;
     }
 }
