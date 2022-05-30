@@ -1,4 +1,4 @@
-package main.java.leetcode.datastructure.hashmap;
+package main.java.leetcode.datatype.numbers;
 
 import java.util.HashSet;
 
@@ -11,6 +11,7 @@ public class HappyNumbers {
         System.out.println(isHappy(319));
     }
 
+    // Using HashSet
     public static boolean isHappy(int n) {
 
         HashSet<Integer> hs = new HashSet<>();
@@ -27,5 +28,28 @@ public class HappyNumbers {
                 n = sum;
         }
         return false;
+    }
+
+    // Using Two Pointers
+    public static boolean isHappyTP(int n) {
+        int slow, fast;
+        slow = fast = n;
+        do {
+            slow = digitSquareSum(slow);
+            fast = digitSquareSum(fast);
+            fast = digitSquareSum(fast);
+        } while (slow != fast);
+        if (slow == 1) return true;
+        else return false;
+    }
+
+    private static int digitSquareSum(int n) {
+        int sum = 0, tmp;
+        while (n > 0) {
+            tmp = n % 10;
+            sum += tmp * tmp;
+            n /= 10;
+        }
+        return sum;
     }
 }
