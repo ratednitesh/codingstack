@@ -1,4 +1,4 @@
-package main.java.leetcode.datastructure.array;
+package main.java.leetcode.datastructure.hashmap;
 
 import java.util.HashSet;
 

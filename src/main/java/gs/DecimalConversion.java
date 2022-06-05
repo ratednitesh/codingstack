@@ -3,6 +3,9 @@ package main.java.gs;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 
+/***************************
+ * #numberOperations
+ ****************************/
 public class DecimalConversion {
     public static void main(String[] args) {
         System.out.println(decimalConversion(-1, 11));

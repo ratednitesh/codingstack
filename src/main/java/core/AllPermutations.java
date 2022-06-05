@@ -1,5 +1,8 @@
 package main.java.core;
 
+/***************************
+ * #permutation #recursion
+ ****************************/
 public class AllPermutations {
     public static void main(String[] args) {
         permutations("abc");

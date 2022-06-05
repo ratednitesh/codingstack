@@ -2,6 +2,7 @@ package main.java.leetcode.datastructure.array;
 
 /***************************
  * https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+ * #BinarySearch
  ****************************/
 public class FindMinimumInRotatedSortedArray {
     public static void main(String[] args) {

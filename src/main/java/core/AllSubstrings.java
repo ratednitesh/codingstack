@@ -1,4 +1,7 @@
 package main.java.core;
+/***************************
+ *
+ ****************************/
 
 import java.util.HashSet;
 
@@ -13,6 +16,7 @@ public class AllSubstrings {
             StringBuilder sb = new StringBuilder();
             for (int j = i; j < s.length(); j++) {
                 sb.append(s.charAt(j));
+                System.out.println(sb);
                 hs.add(sb.toString());
             }
         }

@@ -2,6 +2,7 @@ package main.java.leetcode.datastructure.array;
 
 /***************************
  * https://leetcode.com/problems/find-peak-element/
+ *  #BinarySearch
  ****************************/
 public class FindPeakElements {
     public static void main(String[] args) {
