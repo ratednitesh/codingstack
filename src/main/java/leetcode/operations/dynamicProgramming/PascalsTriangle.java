@@ -1,4 +1,4 @@
-package main.java.leetcode.datastructure.linkedList;
+package main.java.leetcode.operations.dynamicProgramming;
 
 import java.util.ArrayList;
 import java.util.Collections;

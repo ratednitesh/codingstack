@@ -17,6 +17,7 @@ public class JumpGame {
         return true;
     }
 
+    // Optimal
     public boolean canJumpEnhanced(int[] nums) {
         int reachable = 0, len = nums.length;
         for (int i = 0; i < len && i <= reachable; i++) {
@@ -27,7 +28,7 @@ public class JumpGame {
 
     }
 
-    //dfs solution
+    //dfs solution - takes longer time
     boolean[] visited;
     boolean status = false;
 
@@ -47,12 +48,26 @@ public class JumpGame {
 
         for (int i = start + 1; i <= start + nums[start]; i++) {
             if (!visited[i]) {
-                status = status || dfs(nums, i);
-                if (status)
+                if (dfs(nums, i))
                     return true;
             }
         }
         return false;
     }
-    // TODO : DP Solution
+
+    // DP Solution // TODO: Refine this solution
+    public boolean canJumpDP(int[] nums) {
+        int n = nums.length;
+        int[] mem = new int[n + 1];
+        for (int i = 0; i < n; i++) {
+            if (i > mem[i]) {
+                return false;
+            } else {
+                mem[i + 1] = Math.max(mem[i], nums[i] + i);
+                if (mem[i] > n)
+                    return true;
+            }
+        }
+        return true;
+    }
 }

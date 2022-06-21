@@ -1,0 +1,31 @@
+package main.java.leetcode.operations.bitwise;
+
+import java.util.Arrays;
+
+/***************************
+ * https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits/
+ ****************************/
+public class SortIntegersByNumberOf1Bits {
+    public int[] sortByBits(int[] arr) {
+        int n = arr.length, res[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            res[i] = countBitOne(arr[i]) * 10001 + arr[i];
+        }
+
+        Arrays.sort(res);
+        for (int i = 0; i < n; i++) {
+            res[i] %= 10001;
+        }
+
+        return res;
+    }
+
+    private int countBitOne(int n) {
+        int res = 0;
+        while (n != 0) {
+            res += (n & 1);
+            n >>= 1;
+        }
+        return res;
+    }
+}

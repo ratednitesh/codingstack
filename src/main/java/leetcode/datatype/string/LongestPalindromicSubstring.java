@@ -22,6 +22,7 @@ public class LongestPalindromicSubstring {
     }
 
     private static void extendPalindrome(int[] maxLenStart, String s, int length, int i, int j) {
+
         while (i >= 0 && j < length && s.charAt(i) == s.charAt(j)) {
             i--;
             j++;
@@ -30,6 +31,30 @@ public class LongestPalindromicSubstring {
             maxLenStart[0] = j - i - 1;
             maxLenStart[1] = i + 1;
         }
-       
+
+    }
+
+    // Using DP
+    public static String longestPalindromeDP(String s) {
+        if (s.length() < 2) return s;
+        boolean[][] dp = new boolean[s.length()][s.length()];
+        int start = 0, end = 0;
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i; j >= 0; j--) {
+                boolean charEq = s.charAt(i) == s.charAt(j);
+                if (i == j)
+                    dp[i][j] = true;
+                else if (i == j + 1)
+                    dp[i][j] = charEq;
+                else if (charEq && dp[i - 1][j + 1]) { //string is palindrome if s(i) == s(j) and substring s(j + 1, i - 1) is palindrome
+                    dp[i][j] = true;
+                }
+                if (dp[i][j] && i - j > end - start) {
+                    start = j;
+                    end = i;
+                }
+            }
+        }
+        return s.substring(start, end + 1);
     }
 }
