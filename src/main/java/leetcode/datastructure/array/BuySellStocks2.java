@@ -34,4 +34,15 @@ public class BuySellStocks2 {
 
         return profit;
     }
+
+    // Generic Solution
+    public static int maxProfitGeneric(int[] prices) {
+        int buyEndingProfit = -prices[0], sellEndingProfit = 0;
+        for (int i = 1; i < prices.length; i++) {
+            int currSellEndingProfit = Math.max(sellEndingProfit, buyEndingProfit + prices[i]);
+            buyEndingProfit = Math.max(buyEndingProfit, sellEndingProfit - prices[i]);
+            sellEndingProfit = currSellEndingProfit;
+        }
+        return sellEndingProfit;
+    }
 }
