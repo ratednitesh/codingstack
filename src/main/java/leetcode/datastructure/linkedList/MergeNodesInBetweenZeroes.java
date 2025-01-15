@@ -17,7 +17,7 @@ public class MergeNodesInBetweenZeroes {
 
         return falseHead.next;
     }
-
+ 
     // TODO: understand below solution
     public ListNode mergeNodesTP(ListNode head) {
         ListNode dummy = new ListNode(Integer.MIN_VALUE), prev = dummy;

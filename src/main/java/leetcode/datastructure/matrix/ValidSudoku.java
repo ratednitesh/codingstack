@@ -11,6 +11,14 @@ import java.util.HashSet;
  * Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
  ****************************/
 public class ValidSudoku {
+    public static void main(String[] args) {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++)
+                System.out.println(((i / 3) * 3) + (j / 3));
+
+        }
+    }
+
     public boolean isValidSudokuHS(char[][] board) {
         HashSet<String> hs = new HashSet<>();
         for (int i = 0; i < 9; i++) {
@@ -18,6 +26,21 @@ public class ValidSudoku {
                 if (board[i][j] != '.')
                     if (!hs.add(board[i][j] + " is at row " + i) || !hs.add(board[i][j] + " is at col " + j) || !hs.add(board[i][j] + " is at grid " + i / 3 + "-" + j / 3))
                         return false;
+        }
+        return true;
+    }
+
+    public static boolean isValidSudokuOptimized(char[][] board) {
+        boolean[][][] hs = new boolean[3][9][9];
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (board[i][j] != '.') {
+                    int index = board[i][j] - '1';
+                    if (hs[0][i][index] || hs[1][j][index] || hs[2][(i / 3) * 3 + j / 3][index]) {
+                        return false;
+                    }
+                }
+            }
         }
         return true;
     }
